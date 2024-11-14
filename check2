@@ -1,0 +1,22 @@
+MIDIClient.init;
+~k0 = MIDIOut(3);
+~k0.noteOn(0, 34, 127);
+~k0.allNotesOff(0);
+
+
+//Yamaha Rev500
+r = 15; //channel
+
+
+
+~rev500_predelay = ~k0.control(r, 12, rrand(0.0, 126));
+~rev500_revtime = ~k0.control(r, 13, rrand(0.0, 99.0));
+~rev500_hiratio = ~k0.control(r, 14, rrand(0.0, 1.0));
+~rev500_erlevel = ~k0.control(r, 15, rrand(0.0, 100.0));
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+s.boot;
+
+b = Buffer.read(s, "/Users/robinson.will.sam/Desktop/SAMPLES ROOT/loop-hh.wav");
+b.play;
+
+(
+SynthDef(\vocoder, {
+	var car, mod, hpfmod, num = 38,
+	bpfhz = (1..num).linexp(1, num, 25, 16000);
+	mod = PlayBuf.ar(1, b, BufRateScale.ir(b), loop:1);
+	car = CombL.ar(WhiteNoise.ar, 1/20, 1/\freq.kr(50), 3);
+	hpfmod = BPF.ar(mod, bpfhz);
+	Out.ar(0, car * 0.2!2);
+}).play;
+)
+
+
